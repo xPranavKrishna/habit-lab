@@ -4,6 +4,8 @@ import { Inter, Space_Grotesk } from 'next/font/google'
 const inter = Inter({subsets:['latin'], variable:'--font-inter'})
 const space = Space_Grotesk({subsets:['latin'], variable:'--font-space'})
 
+import { AppProvider } from '@/context/AppContext';
+
 export const metadata = { 
   title:'Habit Lab 🧪 — Make consistency feel like a game', 
   description:'A playful personal learning cockpit and habit tracker.',
@@ -13,5 +15,13 @@ export const metadata = {
 }
 
 export default function RootLayout({children}:{children:React.ReactNode}){
- return <html lang="en"><body className={`${inter.variable} ${space.variable}`}>{children}</body></html>
+  return (
+    <html lang="en">
+      <body className={`${inter.variable} ${space.variable}`}>
+        <AppProvider>
+          {children}
+        </AppProvider>
+      </body>
+    </html>
+  );
 }
