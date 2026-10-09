@@ -36,8 +36,8 @@ export default function CanvasTab() {
         transform: 'rotate(-1deg)'
       }}>
         <div style={{flex: 1}}>
-          <p className="eyebrow" style={{marginBottom: '5px', color: 'var(--ink)'}}>RANDOM STUPID THOUGHT 💭</p>
-          <h3 style={{fontFamily: 'var(--display)', fontSize: '22px', color: 'var(--ink)', lineHeight: '1.4', margin: 0}}>
+          <p className="eyebrow" style={{marginBottom: '5px', color: 'rgba(17,17,17,0.7)'}}>RANDOM STUPID THOUGHT 💭</p>
+          <h3 style={{fontFamily: 'var(--display)', fontSize: '22px', color: '#111', lineHeight: '1.4', margin: 0}}>
             "{randomThought}"
           </h3>
         </div>

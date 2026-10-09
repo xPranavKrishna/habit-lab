@@ -47,11 +47,11 @@ export default function GossipTab() {
       </div>
 
       <div className="dashboard-grid">
-        <div className="panel" style={{background: '#fef3c7', gridColumn: '1 / -1', border: '4px solid var(--ink)', boxShadow: '8px 8px 0 var(--ink)', position: 'relative'}}>
+        <div className="panel" style={{background: '#fef3c7', color: '#111', gridColumn: '1 / -1', border: '4px solid var(--ink)', boxShadow: '8px 8px 0 var(--ink)', position: 'relative'}}>
           <div style={{position: 'absolute', right: '20px', top: '20px', width: '60px', height: '60px', border: '4px solid rgba(139, 69, 19, 0.2)', borderRadius: '50%', pointerEvents: 'none'}}></div>
           
           <div className="panel-head" style={{borderBottom: '4px dashed var(--ink)', paddingBottom: '10px', marginBottom: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap'}}>
-            <h2 style={{color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: '10px'}}>
+            <h2 style={{color: '#111', display: 'flex', alignItems: 'center', gap: '10px'}}>
               <span style={{fontSize: '40px', filter: 'drop-shadow(2px 2px 0 var(--ink))'}}>☕</span> Chayakada Gossips 🤫
             </h2>
             <div 
@@ -96,7 +96,7 @@ export default function GossipTab() {
               </svg>
             </div>
           </div>
-          <p style={{color: 'var(--ink)', fontSize: '18px', fontWeight: 800, marginBottom: '20px'}}>
+          <p style={{color: '#111', fontSize: '18px', fontWeight: 800, marginBottom: '20px'}}>
             Nattukar ariyanda... Namukidayil maathram! What's the tea today? 🫖
           </p>
           <div className="add gossips-add" style={{gridTemplateColumns: '1fr auto', alignItems: 'flex-end', background: 'var(--card)', padding: '20px', borderRadius: '12px', border: '2px solid var(--ink)', boxShadow: '4px 4px 0 var(--ink)'}}>
@@ -142,13 +142,13 @@ export default function GossipTab() {
               onMouseLeave={e => e.currentTarget.style.transform = `rotate(${tilt}deg) scale(1)`}
               >
                 <div style={{position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%) rotate(-2deg)', background: 'rgba(255,255,255,0.7)', width: '60px', height: '20px', border: '1px solid rgba(0,0,0,0.2)', boxShadow: '1px 1px 0 rgba(0,0,0,0.1)', zIndex: 1}}></div>
-                <p style={{fontSize: '17px', fontWeight: 700, margin: '15px 0', whiteSpace: 'pre-wrap', color: 'var(--ink)', fontFamily: 'var(--font-sans)'}}>
+                <p style={{fontSize: '17px', fontWeight: 700, margin: '15px 0', whiteSpace: 'pre-wrap', color: '#111', fontFamily: 'var(--font-sans)'}}>
                   "{g.content}"
                 </p>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '20px', borderTop: '2px dashed rgba(0,0,0,0.2)', paddingTop: '15px'}}>
                   <div style={{display: 'flex', flexDirection: 'column'}}>
-                    <span style={{fontSize: '13px', fontWeight: 800, color: 'var(--ink)', opacity: 0.6}}>Kivi kivi... 🦇</span>
-                    <span style={{fontSize: '11px', fontWeight: 600, color: 'var(--ink)', opacity: 0.5}}>{new Date(g.created_at).toLocaleDateString()}</span>
+                    <span style={{fontSize: '13px', fontWeight: 800, color: '#111', opacity: 0.6}}>Kivi kivi... 🦇</span>
+                    <span style={{fontSize: '11px', fontWeight: 600, color: '#111', opacity: 0.5}}>{new Date(g.created_at).toLocaleDateString()}</span>
                   </div>
                   <button className="icon-pill hover-lift" title="Remove Gossip" onClick={() => removeGossip(g.id)} style={{background: 'var(--ink)', color: 'white', padding: '8px', border: '2px solid var(--ink)', cursor: 'pointer'}}>
                     <Trash2 size={14}/>
@@ -156,7 +156,7 @@ export default function GossipTab() {
                 </div>
               </div>
             )})}
-            {gossips.length === 0 && <div className="empty" style={{width: '100%', background: 'rgba(255,255,255,0.5)', color: 'var(--ink)', border: '2px dashed var(--ink)'}}>Nattukarude karyam ariyande irikkunnu? Aaraa e ee thengil keriyathu? 🤔 (No gossips yet!)</div>}
+            {gossips.length === 0 && <div className="empty" style={{width: '100%', background: 'rgba(255,255,255,0.5)', color: '#111', border: '2px dashed #111'}}>Nattukarude karyam ariyande irikkunnu? Aaraa e ee thengil keriyathu? 🤔 (No gossips yet!)</div>}
           </div>
         </div>
 

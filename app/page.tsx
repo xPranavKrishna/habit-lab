@@ -21,6 +21,21 @@ export default function App() {
   } = useAppContext();
   
   const [showUncle, setShowUncle] = useState(false);
+  const [isComet, setIsComet] = useState(false);
+  const [isFalling, setIsFalling] = useState(false);
+
+  const fireComet = () => {
+    if (isComet) return;
+    setIsComet(true);
+    setTimeout(() => setIsComet(false), 2500);
+  };
+
+  const fireFall = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isFalling) return;
+    setIsFalling(true);
+    setTimeout(() => setIsFalling(false), 2500);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,6 +53,8 @@ export default function App() {
     return <Login />;
   }
 
+  const titleText = "HABIT LAB".split('');
+
   return (
     <main className="app-shell" id="top">
       {/* Fun Background Elements */}
@@ -46,9 +63,18 @@ export default function App() {
       <div className="fun-bg-shape shape-3"/>
 
       <header className="topbar">
-        <div className="brand">
-          <span className="logo mini wiggle-hover">HL<span>🧪</span></span>
-          <span className="brand-name">HABIT LAB <i>the lazy way</i></span>
+        <div className="brand" style={{ zIndex: 50 }}>
+          <span className={`logo mini ${isComet ? 'comet-anim' : 'wiggle-hover'}`} onClick={fireComet} style={{ cursor: 'pointer' }}>HL<span>🧪</span></span>
+          <span className="brand-name" onClick={fireFall} style={{ cursor: 'pointer', display: 'flex', alignItems: 'baseline', gap: '3px' }}>
+            <span style={{ display: 'flex' }}>
+              {titleText.map((char, i) => (
+                <span key={i} className={isFalling ? 'letter-fall' : ''} style={{ display: 'inline-block', whiteSpace: 'pre', animationDelay: `${i * 0.08}s` }}>
+                  {char}
+                </span>
+              ))}
+            </span>
+            <i className={isFalling ? 'letter-fall' : ''} style={{ display: 'inline-block', animationDelay: `${titleText.length * 0.08}s` }}>the lazy way</i>
+          </span>
         </div>
         <nav>
           {['Today', 'Brain Lab', 'Idea Wall', 'Music', 'Gossips 👀', 'Me'].map(t => (
