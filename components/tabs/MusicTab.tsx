@@ -44,16 +44,16 @@ export default function MusicTab() {
       </div>
       <div className="account-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'}}>
         <div className="panel hover-lift" style={{background: 'var(--lime)', border: '2px solid var(--ink)', cursor: 'pointer', padding: '30px'}} onClick={() => window.open('https://open.spotify.com', '_blank')}>
-          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: 'var(--ink)'}}>Spotify</h2>
-          <p style={{fontWeight: 600, opacity: 0.8, color: 'var(--ink)', fontSize: '15px'}}>Malayalam Lo-Fi aano? K-Pop aano? Poyi kettu padi machane.</p>
+          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: '#111'}}>Spotify</h2>
+          <p style={{fontWeight: 600, opacity: 0.8, color: '#111', fontSize: '15px'}}>Malayalam Lo-Fi aano? K-Pop aano? Poyi kettu padi machane.</p>
         </div>
         <div className="panel hover-lift" style={{background: 'var(--pink)', border: '2px solid var(--ink)', cursor: 'pointer', padding: '30px'}} onClick={() => window.open('https://music.apple.com', '_blank')}>
-          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: 'var(--ink)'}}>Apple Music</h2>
-          <p style={{fontWeight: 600, opacity: 0.8, color: 'var(--ink)', fontSize: '15px'}}>Rich madiyan. Spatial audio-il full vibe aakk.</p>
+          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: '#111'}}>Apple Music</h2>
+          <p style={{fontWeight: 600, opacity: 0.8, color: '#111', fontSize: '15px'}}>Rich madiyan. Spatial audio-il full vibe aakk.</p>
         </div>
         <div className="panel hover-lift" style={{background: 'var(--cyan)', border: '2px solid var(--ink)', cursor: 'pointer', padding: '30px'}} onClick={() => window.open('https://music.youtube.com', '_blank')}>
-          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: 'var(--ink)'}}>YT Music</h2>
-          <p style={{fontWeight: 600, opacity: 0.8, color: 'var(--ink)', fontSize: '15px'}}>Premium illel ad kettu kidannu padikk.</p>
+          <h2 style={{fontFamily: 'var(--display)', fontSize: '28px', color: '#111'}}>YT Music</h2>
+          <p style={{fontWeight: 600, opacity: 0.8, color: '#111', fontSize: '15px'}}>Premium illel ad kettu kidannu padikk.</p>
         </div>
       </div>
       <div className="panel" style={{marginTop: '40px', background: 'var(--card)', overflow: 'hidden'}}>

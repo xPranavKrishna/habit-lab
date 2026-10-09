@@ -194,8 +194,8 @@ export default function TodayTab() {
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'space-between'}}>
           <div style={{flex: 1, minWidth: 'min(100%, 300px)'}}>
             <div className="sticker tilt" style={{background: 'var(--paper)', color: 'var(--ink)'}}>EMERGENCY KIT</div>
-            <h2 style={{fontFamily: 'var(--display)', fontSize: '36px', margin: '15px 0 10px', color: 'var(--ink)', letterSpacing: '-0.03em'}}>Oru chaya kudichaalo? ☕</h2>
-            <p style={{fontSize: '15px', color: 'var(--ink)', fontWeight: 600, opacity: 0.8, maxWidth: '400px', lineHeight: 1.6}}>
+            <h2 style={{fontFamily: 'var(--display)', fontSize: '36px', margin: '15px 0 10px', color: '#111', letterSpacing: '-0.03em'}}>Oru chaya kudichaalo? ☕</h2>
+            <p style={{fontSize: '15px', color: '#111', fontWeight: 600, opacity: 0.8, maxWidth: '400px', lineHeight: 1.6}}>
               Madi pidichu irikkuvaano? Brain full aayo? Take a strict break. 
               Do not touch your phone. Drink water, look at the ceiling, or have a kattan.
             </p>
@@ -206,12 +206,12 @@ export default function TodayTab() {
                 <span style={{fontSize: '12px', color: 'var(--muted)', fontWeight: 600}}>Step away. Sip slowly. No reels.</span>
              </button>
              <button className="method hover-lift" onClick={() => {setTimer(120); setTimerRunning(true); document.getElementById('quests')?.scrollIntoView({behavior:'smooth'})}} style={{flex: 1, minHeight: 'auto', background: 'var(--pink)', padding: '20px', cursor: 'pointer', textAlign: 'left', border: '2px solid var(--ink)', borderRadius: '16px'}}>
-                <b style={{display: 'block', fontSize: '18px', fontFamily: 'var(--display)', marginBottom: '5px'}}>Vellam Kudi (2m)</b>
-                <span style={{fontSize: '12px', color: 'var(--ink)', fontWeight: 600, opacity: 0.8}}>Sthalam vittu poyi vellam kudikk.</span>
+                <b style={{display: 'block', fontSize: '18px', fontFamily: 'var(--display)', marginBottom: '5px', color: '#111'}}>Vellam Kudi (2m)</b>
+                <span style={{fontSize: '12px', color: '#111', fontWeight: 600, opacity: 0.8}}>Sthalam vittu poyi vellam kudikk.</span>
              </button>
              <button className="method hover-lift" onClick={() => {setTimer(600); setTimerRunning(true); document.getElementById('quests')?.scrollIntoView({behavior:'smooth'})}} style={{flex: 1, minHeight: 'auto', background: 'var(--cyan)', padding: '20px', cursor: 'pointer', textAlign: 'left', border: '2px solid var(--ink)', borderRadius: '16px'}}>
-                <b style={{display: 'block', fontSize: '18px', fontFamily: 'var(--display)', marginBottom: '5px'}}>Kathi Adi (10m)</b>
-                <span style={{fontSize: '12px', color: 'var(--ink)', fontWeight: 600, opacity: 0.8}}>Talk to someone. Maximum 10 mins.</span>
+                <b style={{display: 'block', fontSize: '18px', fontFamily: 'var(--display)', marginBottom: '5px', color: '#111'}}>Kathi Adi (10m)</b>
+                <span style={{fontSize: '12px', color: '#111', fontWeight: 600, opacity: 0.8}}>Talk to someone. Maximum 10 mins.</span>
              </button>
           </div>
         </div>
@@ -222,8 +222,8 @@ export default function TodayTab() {
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'flex-start'}}>
           <div style={{flex: 1, minWidth: 'min(100%, 300px)'}}>
             <div className="sticker tilt" style={{background: 'var(--pink)', color: 'white'}}>CHAVAR KUTTA 🗑️</div>
-            <h2 style={{fontFamily: 'var(--display)', fontSize: '32px', margin: '15px 0 10px', color: 'var(--ink)'}}>Kachaara Chinthakal</h2>
-            <p style={{fontSize: '15px', color: 'var(--ink)', fontWeight: 600, opacity: 0.9, lineHeight: 1.6}}>
+            <h2 style={{fontFamily: 'var(--display)', fontSize: '32px', margin: '15px 0 10px', color: '#111'}}>Kachaara Chinthakal</h2>
+            <p style={{fontSize: '15px', color: '#111', fontWeight: 600, opacity: 0.9, lineHeight: 1.6}}>
               Mindil valla stupid overthinking or distractions varunnundo? Type it here and burn it. Poyi padikkeda madiya!
             </p>
           </div>
