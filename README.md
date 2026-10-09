@@ -4,6 +4,8 @@
 
 Habit Lab is a quirky, brutalist-inspired personal learning cockpit and habit tracker. It is designed to make consistency feel less like a chore and more like a game, blending productivity with a healthy dose of humor and local Malayalam pop-culture flavor.
 
+🔥 **Live Demo (Check it out before you get lazy):** [https://tryhabitlab.vercel.app/](https://tryhabitlab.vercel.app/)
+
 ![Habit Lab Preview](https://via.placeholder.com/800x450.png?text=Habit+Lab+%F0%9F%A7%AA)
 
 ## 🌟 Features

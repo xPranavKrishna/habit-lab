@@ -62,10 +62,10 @@ export default function GossipTab() {
             >
               {monkeyMsg && (
                 <div className="pop-anim" style={{
-                  position: 'absolute', top: '-45px', right: '50px', background: 'var(--paper)', 
-                  color: 'var(--ink)', padding: '8px 12px', borderRadius: '20px 20px 0 20px', 
+                  position: 'absolute', top: '-60px', left: '50%', transform: 'translateX(-50%)', background: 'var(--paper)', 
+                  color: 'var(--ink)', padding: '8px 12px', borderRadius: '16px', 
                   border: '2px solid var(--ink)', boxShadow: '3px 3px 0 var(--ink)', 
-                  fontWeight: 800, fontSize: '13px', width: 'max-content', maxWidth: '160px', zIndex: 10
+                  fontWeight: 800, fontSize: '13px', width: 'max-content', maxWidth: '160px', zIndex: 10, textAlign: 'center'
                 }}>
                   {monkeyMsg}
                 </div>
@@ -102,7 +102,7 @@ export default function GossipTab() {
           <div className="add gossips-add" style={{gridTemplateColumns: '1fr auto', alignItems: 'flex-end', background: 'var(--card)', padding: '20px', borderRadius: '12px', border: '2px solid var(--ink)', boxShadow: '4px 4px 0 var(--ink)'}}>
             <textarea 
               className="fun-input" 
-              style={{minHeight: '80px', resize: 'vertical', fontSize: '16px', background: 'var(--paper)', border: '2px dashed var(--ink)'}}
+              style={{minHeight: '80px', resize: 'vertical', fontSize: '16px', background: 'var(--paper)', border: '2px dashed var(--ink)', width: '100%'}}
               placeholder="Ariyamo, innale aval/avan... 🫢💬" 
               value={newGossip} 
               onChange={e=>setNewGossip(e.target.value)} 
@@ -110,7 +110,16 @@ export default function GossipTab() {
             <button className="primary bounce-hover" style={{height: '100%', background: 'var(--orange)', color: 'white'}} onClick={() => { addGossip(newGossip); setNewGossip(''); }}><Flame size={18}/> Kathikku 🔥</button>
           </div>
           
-          <div className="task-list" style={{marginTop: '40px', display: 'flex', flexWrap: 'wrap', gap: '25px', padding: '10px', maxHeight: '350px', overflowY: 'auto', overflowX: 'hidden'}}>
+          <div className="task-list" style={{
+            marginTop: '40px', 
+            display: 'flex', 
+            flexWrap: 'nowrap', 
+            gap: '25px', 
+            padding: '20px 10px 40px 10px', 
+            overflowX: 'auto', 
+            overflowY: 'hidden',
+            WebkitOverflowScrolling: 'touch'
+          }}>
             {gossips.map((g, index) => {
               const colors = ['#fffbeb', '#f0fdf4', '#fdf2f8', '#eff6ff', '#f5f3ff'];
               const bg = colors[index % colors.length];
@@ -124,9 +133,9 @@ export default function GossipTab() {
                 border: '2px solid var(--ink)',
                 transform: `rotate(${tilt}deg)`,
                 position: 'relative',
-                minWidth: '250px',
-                maxWidth: '400px',
-                flex: '1 1 auto',
+                width: '300px',
+                maxWidth: '85vw',
+                flex: '0 0 auto',
                 transition: 'transform 0.2s ease',
               }}
               onMouseEnter={e => e.currentTarget.style.transform = 'rotate(0deg) scale(1.05)'}
@@ -158,7 +167,7 @@ export default function GossipTab() {
           <p style={{margin: '10px 0', fontWeight: 600}}>Add someone to love or burn. 🔥</p>
           
           <div className="add" style={{display: 'flex', gap: '15px', flexWrap: 'wrap', alignItems: 'center'}}>
-            <input className="fun-input" style={{flex: 1, minWidth: '200px'}} placeholder="Name (e.g. Appi Biju)" value={personName} onChange={e=>setPersonName(e.target.value)} />
+            <input className="fun-input" style={{flex: 1, minWidth: 'min(100%, 200px)'}} placeholder="Name (e.g. Appi Biju)" value={personName} onChange={e=>setPersonName(e.target.value)} />
             <select className="fun-input" value={personType} onChange={e=>setPersonType(e.target.value as any)}>
               <option value="loved">Chunk 💖</option>
               <option value="hated">Theppu / Hater 🔪</option>
@@ -169,9 +178,9 @@ export default function GossipTab() {
               <option value="trans">Trans 🏳️‍⚧️</option>
               <option value="secret">Secret 🤐</option>
             </select>
-            <input className="fun-input" style={{flex: 1, minWidth: '150px'}} placeholder="Tag (e.g. Visham 🐍)" value={personTag} onChange={e=>setPersonTag(e.target.value)} />
-            <input className="fun-input" style={{flex: 1, minWidth: '150px'}} placeholder="Weapon (Optional) 🔫" value={personWeapon} onChange={e=>setPersonWeapon(e.target.value)} />
-            <input className="fun-input" style={{flex: 2, minWidth: '250px'}} placeholder="Short desc (Why?)" value={personDesc} onChange={e=>setPersonDesc(e.target.value)} />
+            <input className="fun-input" style={{flex: 1, minWidth: 'min(100%, 150px)'}} placeholder="Tag (e.g. Visham 🐍)" value={personTag} onChange={e=>setPersonTag(e.target.value)} />
+            <input className="fun-input" style={{flex: 1, minWidth: 'min(100%, 150px)'}} placeholder="Weapon (Optional) 🔫" value={personWeapon} onChange={e=>setPersonWeapon(e.target.value)} />
+            <input className="fun-input" style={{flex: 2, minWidth: 'min(100%, 250px)'}} placeholder="Short desc (Why?)" value={personDesc} onChange={e=>setPersonDesc(e.target.value)} />
             <button className="primary bounce-hover" style={{background: '#111', color: 'white', borderColor: '#111', padding: '12px 25px'}} onClick={handleAddPerson}>Add Person</button>
           </div>
           {personError && <div className="pop-anim" style={{marginTop: '15px', color: 'white', fontWeight: 800, fontSize: '15px', background: 'var(--orange)', padding: '12px 15px', borderRadius: '8px', border: '2px solid var(--ink)', boxShadow: '4px 4px 0 var(--ink)'}}>⚠️ {personError}</div>}

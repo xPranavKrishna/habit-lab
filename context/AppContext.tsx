@@ -160,16 +160,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
       "Dehydration adichu chavum. Poi vellam kudi! 🚰",
       "Body full of madi, at least pour some water in it! 🧊"
     ];
-    let timeoutId: number;
+    
     const triggerReminder = () => {
       setWaterRoast(waterRoasts[Math.floor(Math.random() * waterRoasts.length)]);
       setShowWaterReminder(true);
-      const nextGap = Math.floor(Math.random() * (45 * 60000 - 30 * 60000 + 1) + 30 * 60000);
-      timeoutId = window.setTimeout(triggerReminder, nextGap);
     };
-    const initialGap = Math.floor(Math.random() * (45 * 60000 - 30 * 60000 + 1) + 30 * 60000);
-    timeoutId = window.setTimeout(triggerReminder, initialGap);
-    return () => clearTimeout(timeoutId);
+
+    let intervalId: number;
+    
+    // First reminder between 1 to 2 minutes (60,000 to 120,000 ms)
+    const initialDelay = Math.floor(Math.random() * (120000 - 60000 + 1)) + 60000;
+    
+    const timeoutId = window.setTimeout(() => {
+      triggerReminder();
+      // Exactly 20 minutes (20 * 60 * 1000 ms) for all subsequent reminders
+      intervalId = window.setInterval(triggerReminder, 20 * 60 * 1000);
+    }, initialDelay);
+    
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [user]);
 
   useEffect(()=>{
