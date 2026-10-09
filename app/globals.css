@@ -526,19 +526,22 @@ footer span { color: var(--purple); font-weight: 800; background: var(--lime); c
 @keyframes jiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
 @keyframes spin360 { 100% { transform: rotate(360deg); } }
 
-.bounce-hover:hover { animation: bounce 0.5s infinite; }
-.wiggle-hover:hover { animation: wiggle 0.5s infinite; }
-.pulse-hover:hover { animation: pulse 0.8s infinite; }
 .float-anim { animation: float 4s infinite ease-in-out alternate; }
 .pulse-anim { animation: pulse 2s infinite; }
 .wiggle-anim { animation: wiggle 2s infinite linear; }
 .heartbeat-anim { animation: heartbeat 2s infinite ease-in-out; }
-.jiggle-hover:hover { animation: jiggle 0.4s infinite ease-in-out; }
-.spin-hover:hover { animation: spin360 1s ease-in-out; }
-.pop-hover:hover { transform: scale(1.1) translateY(-2px); }
-.scale-hover:hover { transform: scale(1.05); }
 .hover-lift { transition: 0.3s; }
-.hover-lift:hover { transform: translateY(-8px); box-shadow: 4px 10px 0 var(--lime) !important; z-index: 2; position: relative; }
+
+@media (hover: hover) {
+  .bounce-hover:hover { animation: bounce 0.5s infinite; }
+  .wiggle-hover:hover { animation: wiggle 0.5s infinite; }
+  .pulse-hover:hover { animation: pulse 0.8s infinite; }
+  .jiggle-hover:hover { animation: jiggle 0.4s infinite ease-in-out; }
+  .spin-hover:hover { animation: spin360 1s ease-in-out; }
+  .pop-hover:hover { transform: scale(1.1) translateY(-2px); }
+  .scale-hover:hover { transform: scale(1.05); }
+  .hover-lift:hover { transform: translateY(-8px); box-shadow: 4px 10px 0 var(--lime) !important; z-index: 2; position: relative; }
+}
 
 /* RESPONSIVE */
 @media(max-width:1050px) {
@@ -553,8 +556,9 @@ footer span { color: var(--purple); font-weight: 800; background: var(--lime); c
 @media(max-width:720px) {
   .topbar { height: auto; min-height: 70px; flex-wrap: wrap; padding: 12px 15px; gap: 12px; border-bottom-width: 2px; }
   .brand-name { display: none; }
-  nav { order: 3; width: 100%; overflow: auto; padding: 6px; }
-  nav button, nav a { white-space: nowrap; }
+  nav { order: 3; width: 100%; overflow: auto; padding: 6px; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  nav button, nav a { white-space: nowrap; scroll-snap-align: start; }
   .hero { padding: 55px 20px 35px; flex-direction: column; align-items: stretch; text-align: center; }
   .hero-copy { margin: 0 auto; }
   .hero-actions { justify-content: center; }

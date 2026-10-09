@@ -69,3 +69,41 @@ export const monkeyDialogues = [
   "Nammalu pottano? 🤪",
   "Scoop entha makkale? ☕"
 ];
+
+export const dailyChallenges = [
+  {
+    title: 'Teach one thing badly, then better.',
+    desc: 'Pick any idea you learned today. Explain it out loud in 60 seconds without notes. Then check what you forgot.',
+    time: 60,
+  },
+  {
+    title: 'The "Just 5 Minutes" Trick.',
+    desc: 'Pick the task you are dreading the most. Set a timer for 5 minutes and just start. You can stop after 5 mins if you want.',
+    time: 300,
+  },
+  {
+    title: 'Write down 3 priorities.',
+    desc: 'Close your eyes. What are the 3 most important things to do today? Write them down in 60 seconds. Everything else is a distraction.',
+    time: 60,
+  },
+  {
+    title: 'Stare at the wall (Dopamine reset).',
+    desc: 'Do nothing for 2 minutes. No phone, no music, no talking. Let your brain get bored.',
+    time: 120,
+  },
+  {
+    title: 'Declutter your workspace.',
+    desc: 'You have exactly 3 minutes to clean your desk, close useless browser tabs, and organize your space. Go!',
+    time: 180,
+  },
+  {
+    title: 'Feynman Technique (Mini).',
+    desc: 'Take a complex concept you are studying. Try to explain it on a piece of paper as if teaching a 10-year-old. You have 3 minutes.',
+    time: 180,
+  },
+  {
+    title: 'Hydration & Stretch.',
+    desc: 'Drink a glass of water, stand up, and stretch your body for 60 seconds. Your back will thank you.',
+    time: 60,
+  },
+];

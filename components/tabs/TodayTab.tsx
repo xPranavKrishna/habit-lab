@@ -192,7 +192,7 @@ export default function TodayTab() {
       {/* Emergency Chaya Break Section */}
       <section className="panel reveal" style={{animationDelay:'0.45s', margin: '0 auto 55px', maxWidth: '1250px', background: 'var(--lime)', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)'}}>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'center', justifyContent: 'space-between'}}>
-          <div style={{flex: 1, minWidth: '300px'}}>
+          <div style={{flex: 1, minWidth: 'min(100%, 300px)'}}>
             <div className="sticker tilt" style={{background: 'var(--paper)', color: 'var(--ink)'}}>EMERGENCY KIT</div>
             <h2 style={{fontFamily: 'var(--display)', fontSize: '36px', margin: '15px 0 10px', color: 'var(--ink)', letterSpacing: '-0.03em'}}>Oru chaya kudichaalo? ☕</h2>
             <p style={{fontSize: '15px', color: 'var(--ink)', fontWeight: 600, opacity: 0.8, maxWidth: '400px', lineHeight: 1.6}}>
@@ -220,14 +220,14 @@ export default function TodayTab() {
       {/* Overthinking / Distraction Dump */}
       <section className="panel reveal" style={{animationDelay:'0.48s', margin: '0 auto 55px', maxWidth: '1250px', background: 'var(--orange)', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)'}}>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '30px', alignItems: 'flex-start'}}>
-          <div style={{flex: 1, minWidth: '300px'}}>
+          <div style={{flex: 1, minWidth: 'min(100%, 300px)'}}>
             <div className="sticker tilt" style={{background: 'var(--pink)', color: 'white'}}>CHAVAR KUTTA 🗑️</div>
             <h2 style={{fontFamily: 'var(--display)', fontSize: '32px', margin: '15px 0 10px', color: 'var(--ink)'}}>Kachaara Chinthakal</h2>
             <p style={{fontSize: '15px', color: 'var(--ink)', fontWeight: 600, opacity: 0.9, lineHeight: 1.6}}>
               Mindil valla stupid overthinking or distractions varunnundo? Type it here and burn it. Poyi padikkeda madiya!
             </p>
           </div>
-          <div style={{flex: 1.5, minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '15px'}}>
+          <div style={{flex: 1.5, minWidth: 'min(100%, 300px)', display: 'flex', flexDirection: 'column', gap: '15px'}}>
              <div style={{position: 'relative', width: '100%'}}>
                <textarea 
                  value={distraction}
@@ -252,7 +252,7 @@ export default function TodayTab() {
       </section>
 
       <section className="heatmap panel reveal" style={{animationDelay:'0.5s', display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center'}}>
-        <div style={{flex: '1', minWidth: '300px'}}>
+        <div style={{flex: '1', minWidth: 'min(100%, 300px)'}}>
           <div className="panel-head" style={{marginBottom: '15px'}}>
             <div>
               <p className="eyebrow">CONSISTENCY GRAPH</p>
@@ -279,7 +279,7 @@ export default function TodayTab() {
           </div>
         </div>
 
-        <div className="consistency-roast hover-lift" style={{flex: '1', minWidth: '300px', backgroundColor: 'var(--paper)', padding: '24px', borderRadius: '16px', border: '2px dashed var(--line)', position: 'relative'}}>
+        <div className="consistency-roast hover-lift" style={{flex: '1', minWidth: 'min(100%, 300px)', backgroundColor: 'var(--paper)', padding: '24px', borderRadius: '16px', border: '2px dashed var(--line)', position: 'relative'}}>
           <div className="sticker tilt pulse-anim" style={{position: 'absolute', top: '-15px', right: '-10px', background: 'var(--pink)'}}>MADIYAN STATUS</div>
           <h3 style={{fontFamily: 'var(--display)', fontSize: '24px', marginBottom: '10px', color: 'var(--ink)'}}>
             {streakDays === 0 ? "Zero Streak. Valiya madiyan aanalle? 😂" : 

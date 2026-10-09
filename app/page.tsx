@@ -101,7 +101,7 @@ export default function App() {
       {/* Destroy Confirmation Overlay for Loved Persons */}
       {personToConfirmDestroy && (
         <div className="overlay" style={{position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'grid', placeItems: 'center'}}>
-          <div className="panel pop-anim" style={{background: 'var(--paper)', maxWidth: '400px', textAlign: 'center'}}>
+          <div className="panel pop-anim" style={{background: 'var(--paper)', maxWidth: 'min(90vw, 400px)', textAlign: 'center'}}>
             <span style={{fontSize: '40px', display: 'block', margin: '10px 0'}}>🥺</span>
             <h2 style={{fontFamily: 'var(--display)'}}>Eda mone, are you sure?</h2>
             <p style={{margin: '15px 0', fontWeight: 600}}>

@@ -1,10 +1,15 @@
 'use client';
 import { Timer } from 'lucide-react';
 import { useAppContext } from '@/context/AppContext';
-import { methods } from '@/lib/constants';
+import { methods, dailyChallenges } from '@/lib/constants';
 
 export default function LabTab() {
   const { setTimer, setTimerRunning, setActiveTab, setIdea } = useAppContext();
+
+  // Deterministically pick ONE challenge for the day based on the current date
+  const dateStr = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
+  const hash = dateStr.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const challenge = dailyChallenges[hash % dailyChallenges.length];
 
   return (
     <section className="page reveal">
@@ -30,14 +35,14 @@ export default function LabTab() {
       <div className="lab-challenge panel bounce-hover">
         <div>
           <p className="eyebrow">TODAY'S RANDOM CHALLENGE</p>
-          <h2>Teach one thing badly, then better.</h2>
-          <p>Pick any idea you learned today. Explain it out loud in 60 seconds without notes. Then check what you forgot.</p>
+          <h2>{challenge.title}</h2>
+          <p>{challenge.desc}</p>
         </div>
         <button className="primary" onClick={() => {
-          setTimer(60);
+          setTimer(challenge.time);
           setTimerRunning(true);
           setActiveTab('Today');
-        }}><Timer size={16}/> 60 sec timer</button>
+        }}><Timer size={16}/> {challenge.time >= 60 ? `${challenge.time / 60} min` : `${challenge.time} sec`} timer</button>
       </div>
     </section>
   );
