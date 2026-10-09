@@ -1,14 +1,14 @@
 create extension if not exists pgcrypto;
 
 create table if not exists public.profiles (
- id uuid primary key references auth.users(id) on delete cascade,
+ id text primary key,
  display_name text,
  created_at timestamptz not null default now()
 );
 
 create table if not exists public.tasks (
  id uuid primary key default gen_random_uuid(),
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  title text not null,
  category text not null default 'Other',
  minutes integer not null default 30,
@@ -20,7 +20,7 @@ create table if not exists public.tasks (
 create table if not exists public.task_logs (
  id uuid primary key default gen_random_uuid(),
  task_id uuid not null references public.tasks(id) on delete cascade,
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  completed_on date not null default current_date,
  completed_at timestamptz not null default now(),
  unique(task_id, completed_on)
@@ -28,14 +28,14 @@ create table if not exists public.task_logs (
 
 create table if not exists public.ideas (
  id uuid primary key default gen_random_uuid(),
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  text text not null,
  created_at timestamptz not null default now()
 );
 
 create table if not exists public.songs (
  id uuid primary key default gen_random_uuid(),
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  title text not null,
  created_at timestamptz not null default now()
 );
@@ -47,37 +47,19 @@ alter table public.ideas enable row level security;
 alter table public.songs enable row level security;
 
 drop policy if exists "profiles own rows" on public.profiles;
-create policy "profiles own rows" on public.profiles for all using (auth.uid() = id) with check (auth.uid() = id);
+create policy "profiles own rows" on public.profiles for all using ((auth.jwt()->>'sub') = id) with check ((auth.jwt()->>'sub') = id);
 
 drop policy if exists "tasks own rows" on public.tasks;
-create policy "tasks own rows" on public.tasks for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "tasks own rows" on public.tasks for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 drop policy if exists "task logs own rows" on public.task_logs;
-create policy "task logs own rows" on public.task_logs for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "task logs own rows" on public.task_logs for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 drop policy if exists "ideas own rows" on public.ideas;
-create policy "ideas own rows" on public.ideas for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "ideas own rows" on public.ideas for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 drop policy if exists "songs own rows" on public.songs;
-create policy "songs own rows" on public.songs for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-
-create or replace function public.handle_new_user()
-returns trigger
-language plpgsql
-security definer set search_path = public
-as $$
-begin
-  insert into public.profiles (id, display_name)
-  values (new.id, coalesce(new.raw_user_meta_data->>'display_name', split_part(new.email, '@', 1)))
-  on conflict (id) do nothing;
-  return new;
-end;
-$$;
-
-drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created
-after insert on auth.users
-for each row execute procedure public.handle_new_user();
+create policy "songs own rows" on public.songs for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 create index if not exists tasks_user_id_idx on public.tasks(user_id);
 create index if not exists task_logs_user_date_idx on public.task_logs(user_id, completed_on);
@@ -87,14 +69,14 @@ create index if not exists songs_user_id_idx on public.songs(user_id);
 -- Paradhushanam (Gossips & Persons)
 create table if not exists public.gossips (
  id uuid primary key default gen_random_uuid(),
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  content text not null,
  created_at timestamptz not null default now()
 );
 
 create table if not exists public.persons (
  id uuid primary key default gen_random_uuid(),
- user_id uuid not null references auth.users(id) on delete cascade,
+ user_id text not null references public.profiles(id) on delete cascade,
  name text not null,
  type text not null,
  tag text,
@@ -106,10 +88,10 @@ alter table public.gossips enable row level security;
 alter table public.persons enable row level security;
 
 drop policy if exists "gossips own rows" on public.gossips;
-create policy "gossips own rows" on public.gossips for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "gossips own rows" on public.gossips for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 drop policy if exists "persons own rows" on public.persons;
-create policy "persons own rows" on public.persons for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "persons own rows" on public.persons for all using ((auth.jwt()->>'sub') = user_id) with check ((auth.jwt()->>'sub') = user_id);
 
 create index if not exists gossips_user_id_idx on public.gossips(user_id);
 create index if not exists persons_user_id_idx on public.persons(user_id);

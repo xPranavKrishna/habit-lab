@@ -1,6 +1,8 @@
 'use client';
 import React, { createContext, useContext, useEffect, useState, useRef, useMemo, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { Task, Log, Idea, Song, Gossip, Person, Tab } from '@/types';
 import { starter, roasts, pepTalks } from '@/lib/constants';
 
@@ -134,9 +136,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const saved=localStorage.getItem('habitlab-theme'); setDark(saved==='dark');
     setRoast(roasts[Math.floor(Math.random()*roasts.length)]);
     setPep(pepTalks[Math.floor(Math.random()*pepTalks.length)]);
-    supabase.auth.getUser().then(({data})=>{setUser(data.user);setLoading(false);if(data.user)load(data.user.id)});
-    const {data:{subscription}}=supabase.auth.onAuthStateChange((_e,s)=>{setUser(s?.user??null);if(s?.user)load(s.user.id)});
-    return ()=>subscription.unsubscribe();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      setLoading(false);
+      if(firebaseUser) load(firebaseUser.uid);
+    });
+    return () => unsubscribe();
   },[]);
 
   useEffect(()=>{
@@ -207,18 +212,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setTasks(t||[]);setLogs(l||[]);setIdeas(i||[]);setPlaylist(s||[]);setGossips(g||[]);setPersons(pers||[]);
   }
 
-  async function logout(){await supabase.auth.signOut();setTasks([]);setLogs([]);setIdeas([]);setUser(null);setProfile(null)}
+  async function logout(){await signOut(auth);setTasks([]);setLogs([]);setIdeas([]);setUser(null);setProfile(null)}
   
   async function saveProfile(displayName: string){
     if(!user)return;
     const name=displayName.trim()||profile?.display_name||user.email?.split('@')[0];
-    const {data}=await supabase.from('profiles').upsert({id:user.id,display_name:name}).select().single();
+    const {data}=await supabase.from('profiles').upsert({id:user.uid,display_name:name}).select().single();
     if(data)setProfile(data);
   }
 
   async function addTask(title: string, category: string, minutes: number){
     if(!title.trim()||!user)return;
-    const row={user_id:user.id,title:title.trim(),category,minutes,xp:Math.max(10,minutes*2),active:true}
+    const row={user_id:user.uid,title:title.trim(),category,minutes,xp:Math.max(10,minutes*2),active:true}
     const {data,error}=await supabase.from('tasks').insert(row).select().single(); 
     if(!error&&data){setTasks(v=>[...v,data]);}
   }
@@ -231,7 +236,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if(existing){
       await supabase.from('task_logs').delete().eq('id',existing.id);setLogs(v=>v.filter(x=>x.id!==existing.id))
     } else {
-      const {data,error}=await supabase.from('task_logs').insert({task_id:t.id,user_id:user.id,completed_on:d}).select('id,task_id,completed_on').single();
+      const {data,error}=await supabase.from('task_logs').insert({task_id:t.id,user_id:user.uid,completed_on:d}).select('id,task_id,completed_on').single();
       if(!error&&data) {
         setLogs(v=>[...v,data]);
         const texts = ["Pwolichu! 🔥", "Kidilam! 🚀", "Minni machane! ✨", "Sambhavam thanne!", "Madi maariyo? 👀", "Adipoli! 🎉", "Kalakki! 💥"];
@@ -245,12 +250,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   async function removeTask(id:string){await supabase.from('tasks').update({active:false}).eq('id',id);setTasks(v=>v.filter(t=>t.id!==id))}
   
-  async function addIdea(text: string){if(!text.trim()||!user)return;const {data}=await supabase.from('ideas').insert({user_id:user.id,text:text.trim()}).select().single();if(data){setIdeas(v=>[data,...v]);}}
+  async function addIdea(text: string){if(!text.trim()||!user)return;const {data}=await supabase.from('ideas').insert({user_id:user.uid,text:text.trim()}).select().single();if(data){setIdeas(v=>[data,...v]);}}
   async function removeIdea(id:string){await supabase.from('ideas').delete().eq('id',id);setIdeas(v=>v.filter(i=>i.id!==id))}
 
   const addSong = async (title: string) => {
     if (!title.trim() || !user) return;
-    const { data } = await supabase.from('songs').insert({user_id: user.id, title: title.trim()}).select().single();
+    const { data } = await supabase.from('songs').insert({user_id: user.uid, title: title.trim()}).select().single();
     if (data) {
       setPlaylist(v => [data, ...v]);
     }
@@ -264,7 +269,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const addGossip = async (content: string) => {
     if (!content.trim() || !user) return;
-    const { data } = await supabase.from('gossips').insert({user_id: user.id, content: content.trim()}).select().single();
+    const { data } = await supabase.from('gossips').insert({user_id: user.uid, content: content.trim()}).select().single();
     if (data) { setGossips(v => [data, ...v]); }
   };
   const removeGossip = async (id: string) => {
@@ -281,7 +286,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (!user) return {};
     
     const { data } = await supabase.from('persons').insert({
-      user_id: user.id, 
+      user_id: user.uid, 
       name: dataPayload.name.trim(), 
       type: dataPayload.type, 
       tag: dataPayload.tag.trim(), 
