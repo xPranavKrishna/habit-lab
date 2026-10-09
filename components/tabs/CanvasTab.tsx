@@ -16,7 +16,7 @@ export default function CanvasTab() {
       <div className="page-title">
         <div className="sticker tilt wiggle-anim">VATTAAYA CHINTHAKAL 🧠</div>
         <p className="eyebrow">THE IDEA WALL</p>
-        <h1>Thonniyavasangal okke<br/><em>ivide idka.</em></h1>
+        <h1>Thonniyavasagal okke<br/><em>ivide iduka.</em></h1>
         <p>Varachu vekk. Ezhuthi vekk. Vattu ideas aanelum kuzhappam illa. Future-il ulla nee vannu clear aakki edutholum.</p>
       </div>
 

@@ -18,19 +18,19 @@ export const roasts = [
   'Your phone has seen more of you today than your goals have. Kashtam.',
   'Bhayankara madiyan aanalle? It\'s okay machane, just tick one box.',
   'Eda… 5 minutes mathi. Start cheyyu. Pinne urangam. 😭',
-  'Naatukaar enth parayum enn orkaruthu. Ninakk padikkan madaya. Ath sathyamanu.',
+  'Naatukaar enth parayum enn orkaruthu. Ninakk padikkan madiya. Ath sathyamaanu.',
   'If procrastination paid salary, you would be CEO of Kerala by now.',
   'Motivation is out of stock. Just use the 5-min timer.',
   'Bro is planning a comeback since 2018. Pwolikkum machane... oru divasam.',
   'Entha machane, urangukayano? Wake up and pretend to work!',
-  'Oru thengayum ariyilla. But just start chummengilum.',
+  'Oru thegayum ariyilla. But just start kuttaa.',
 ]
 
 export const pepTalks = [
   'Tiny today > heroic tomorrow.',
   'Show up ugly. Improve later. Pwolikkam.',
   'You do not need a perfect day. You need a non-zero day.',
-  'Consistency is boring. That is why it works. Adichu keri va!',
+  'Consistency is boring. That is why it works. Adichu keri vaa!',
   'One checkbox can change the mood of the whole day. Sathyam.',
   'Atomic habit machane: 1% better every day.',
   'Oru 5 minute... athre ollu. You got this.',
@@ -61,10 +61,11 @@ export const stupidThoughts = [
 ];
 
 export const monkeyDialogues = [
-  "Njan onnum kettillayee! 🙉",
-  "Aaro vannu... marakku! 🙈",
+  "Njan onnum kettillyee! 🙉",
+  "Aaro vannu... marachu vekku! 🙈",
   "Para para, njan aarodum parayilla 🙊",
   "Onnu poyitharamo, njan kettu padikkuva! 🐒",
-  "Aara ee thengil keriyathu? 👀",
+  "Ithu enthu prahasanam aanu? 👀",
+  "Nammalu pottano? 🤪",
   "Scoop entha makkale? ☕"
 ];
