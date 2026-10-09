@@ -13,7 +13,7 @@ export default function MusicTab() {
         <div style={{ flex: '1 1 300px' }}>
           <div className="sticker tilt float-anim">PATTU PETTI 🎧</div>
           <p className="eyebrow">LAZY PLAYLIST HQ</p>
-          <h1>Padikkan irikkumbo<br/><em>mathram pattu venam.</em></h1>
+          <h1>Padikkan irikkumbo<br/><em>mathram paattu venam.</em></h1>
           <p>Because the silence of your uncompleted tasks is too loud. Open your favorite app and vibe.</p>
         </div>
         

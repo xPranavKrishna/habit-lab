@@ -29,7 +29,7 @@ export function Login() {
     }else{
       const {error}=await supabase.auth.signInWithPassword({email,password});
       if(error) {
-        if(error.message.includes('Invalid login credentials')) setAuthError('Wrong email or password! Mathi marannupooya?');
+        if(error.message.includes('Invalid login credentials')) setAuthError('Wrong email or password! Athum marannupoyi alle?');
         else setAuthError(error.message);
       }
     }
