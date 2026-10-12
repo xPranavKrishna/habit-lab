@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import { categories, categoryIcons, roasts, pepTalks } from '@/lib/constants';
-import { Plus, Trash2, RotateCcw, Play, Pause, Flame, Zap, Target, Trophy, MoreHorizontal, Coffee, Timer, Calendar, Shuffle } from 'lucide-react';
+import { Plus, Trash2, RotateCcw, Play, Pause, Flame, Zap, Target, Trophy, MoreHorizontal, Coffee, Timer, Calendar, Shuffle, Keyboard, ExternalLink } from 'lucide-react';
 
 export default function TodayTab() {
   const { 
@@ -294,6 +294,191 @@ export default function TodayTab() {
             {streakDays === 0 ? "You haven't done anything today. Adichu keri vaa, start any 2 min task! Illenkil shavam aavum." : 
             "Keep feeding the heatmap. The darker the green, the less madiyan you are. Keep it going!"}
           </p>
+        </div>
+      </section>
+
+      {/* LazyKeys Promo Section */}
+      <section 
+        className="panel reveal hover-lift" 
+        style={{
+          animationDelay: '0.55s', 
+          margin: '0 auto 60px', 
+          maxWidth: '1250px', 
+          background: 'var(--card)', 
+          border: '3px solid var(--ink)', 
+          boxShadow: '8px 8px 0 var(--purple)', 
+          borderRadius: '24px', 
+          padding: 'clamp(24px, 4vw, 40px)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        <div style={{
+          display: 'flex', 
+          flexWrap: 'wrap', 
+          gap: '30px', 
+          alignItems: 'center', 
+          justifyContent: 'space-between',
+          position: 'relative',
+          zIndex: 2
+        }}>
+          <div style={{ flex: '1 1 340px', minWidth: 'min(100%, 300px)' }}>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
+              <div className="sticker tilt pulse-anim" style={{ background: 'var(--lime)', color: 'var(--ink)' }}>
+                SECRET LAZY DROP ⌨️
+              </div>
+              <span className="badge" style={{ background: 'var(--pink)', color: '#fff', border: '2px solid var(--ink)', fontWeight: 800 }}>
+                NEW SIDE QUEST
+              </span>
+            </div>
+
+            <p className="eyebrow" style={{ color: 'var(--muted)', marginBottom: '6px' }}>
+              SIDE PROJECT • TYPE FAST, STAY LAZY
+            </p>
+
+            <h2 style={{ fontFamily: 'var(--display)', fontSize: 'clamp(26px, 3.5vw, 38px)', margin: '0 0 14px', lineHeight: 1.15, color: 'var(--ink)' }}>
+              Typing shokam aano aliya? 🤦‍♂️<br />
+              <em style={{ fontStyle: 'normal', color: 'var(--purple)' }}>Type fast. Stay lazy.</em> 😴
+            </h2>
+
+            <p style={{ fontSize: '15px', color: 'var(--muted)', fontWeight: 600, lineHeight: 1.65, maxWidth: '580px', margin: '0 0 20px' }}>
+              Keyboard-il 2 fingers vechu nokki kuthi irikkuvaano, like the keyboard owes you money? 😭 
+              TypingClub okke day 2-il thanne madi pidichu drop aakiyo? <b>Same machane.</b> Athukondaanu <b>LazyKeys</b> undakkiyathu. 
+              One tiny round a day, lots of confetti, zero guilt! 🎉
+            </p>
+
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '25px' }}>
+              <span className="badge" style={{ background: 'var(--paper)', border: '1.5px solid var(--ink)', fontSize: '12px', padding: '6px 12px', color: 'var(--ink)' }}>
+                ✌️ 2-Finger Typists Welcome
+              </span>
+              <span className="badge" style={{ background: 'var(--paper)', border: '1.5px solid var(--ink)', fontSize: '12px', padding: '6px 12px', color: 'var(--ink)' }}>
+                ⏱️ 1 Tiny Round / Day
+              </span>
+              <span className="badge" style={{ background: 'var(--paper)', border: '1.5px solid var(--ink)', fontSize: '12px', padding: '6px 12px', color: 'var(--ink)' }}>
+                🎊 Pure Confetti Vibe
+              </span>
+            </div>
+
+            <div>
+              <a 
+                href="https://lazykeys.vercel.app/play" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="primary bounce-hover"
+                style={{
+                  background: 'var(--purple)',
+                  color: '#ffffff',
+                  fontSize: '15px',
+                  padding: '14px 24px',
+                  borderRadius: '14px',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '9px',
+                  boxShadow: '4px 4px 0 var(--ink)',
+                  border: '2px solid var(--ink)',
+                  cursor: 'pointer'
+                }}
+              >
+                <Keyboard size={18} />
+                <span>Oru round kalichu nokk! 🚀 (Try LazyKeys)</span>
+                <ExternalLink size={16} />
+              </a>
+            </div>
+          </div>
+
+          {/* Interactive Keyboard Visual Card */}
+          <div style={{
+            flex: '1 1 260px',
+            maxWidth: '380px',
+            minWidth: 'min(100%, 260px)',
+            background: 'var(--paper)',
+            border: '2px solid var(--ink)',
+            borderRadius: '20px',
+            padding: '24px',
+            boxShadow: '6px 6px 0 var(--cyan)',
+            transform: 'rotate(1.5deg)',
+            transition: 'transform 0.3s ease',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '11px', fontFamily: 'var(--mono)', fontWeight: 800, color: 'var(--muted)', letterSpacing: '0.08em', marginBottom: '14px', textTransform: 'uppercase' }}>
+              KEYBOARD CONFESSION 🤫
+            </div>
+
+            {/* Retro 3D Keycaps */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '15px', flexWrap: 'wrap' }}>
+              {['L', 'A', 'Z', 'Y'].map((letter, idx) => (
+                <div 
+                  key={letter}
+                  className="pop-hover"
+                  style={{
+                    width: '44px',
+                    height: '46px',
+                    background: idx % 2 === 0 ? 'var(--lime)' : 'var(--pink)',
+                    border: '2px solid var(--ink)',
+                    borderRadius: '8px',
+                    boxShadow: '2px 4px 0 var(--ink)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontFamily: 'var(--display)',
+                    fontWeight: 900,
+                    fontSize: '20px',
+                    color: '#111',
+                    cursor: 'default',
+                    userSelect: 'none'
+                  }}
+                >
+                  {letter}
+                </div>
+              ))}
+              <div 
+                className="pop-hover"
+                style={{
+                  height: '46px',
+                  padding: '0 12px',
+                  background: 'var(--cyan)',
+                  border: '2px solid var(--ink)',
+                  borderRadius: '8px',
+                  boxShadow: '2px 4px 0 var(--ink)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'var(--display)',
+                  fontWeight: 900,
+                  fontSize: '15px',
+                  color: '#111',
+                  cursor: 'default',
+                  userSelect: 'none'
+                }}
+              >
+                KEYS ⚡
+              </div>
+            </div>
+
+            <p style={{ fontSize: '13px', fontWeight: 700, color: 'var(--ink)', margin: '0 0 14px', lineHeight: 1.5 }}>
+              “Staring at keyboard like it owes you money is officially a workout.” 😂
+            </p>
+
+            <a 
+              href="https://lazykeys.vercel.app/play"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '13px',
+                fontWeight: 800,
+                color: 'var(--purple)',
+                textDecoration: 'underline',
+                textUnderlineOffset: '3px'
+              }}
+            >
+              <span>lazykeys.vercel.app/play</span>
+              <ExternalLink size={13} />
+            </a>
+          </div>
         </div>
       </section>
     </>
